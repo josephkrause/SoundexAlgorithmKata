@@ -9,11 +9,14 @@
 #include <iostream>
 using namespace std;
 
+static const size_t MaxCodeLength{4};
+
 class Soundex
 {
     string zeroPad(const string& word) const;
     string head(const string& word) const;
     string encodeDigits(const string& word) const;
+    string encodeDigit(char letter) const;
 public:
     string encode(const string& word) const;
 };
