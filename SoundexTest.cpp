@@ -4,10 +4,14 @@ using namespace std;
 
 class Soundex
 {
+    string zeroPad(const string& word)const
+    {
+        return word + "000";
+    }
 public:
     string encode(const string& word) const
     {
-        return word;
+        return zeroPad(word);
     }
 };
 
@@ -21,6 +25,17 @@ TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord)
    // Act
    auto encode = soundex.encode("A");
    // Assert
-   ASSERT_THAT(encode, Eq("A"));
+   ASSERT_THAT(encode, Eq("A000"));
+}
+
+TEST(SoundexEncoding, PadswithZeroesToEnsureThreeDigits)
+{
+    // Arrange
+    Soundex soundex;
+
+    // Act
+    auto encode = soundex.encode("I");
+    // Assert
+    ASSERT_THAT(encode, Eq("I000"));
 }
 
