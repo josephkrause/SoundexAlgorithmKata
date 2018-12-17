@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 #include "Soundex.h"
-using ::testing::Eq;
+using namespace testing;
 
 class SoundexEncoding: public testing::Test
 {
@@ -81,4 +81,14 @@ TEST_F(SoundexEncoding, CombineduplicateEncodings)
     ASSERT_THAT(soundex.encodeDigit('x'), Eq(soundex.encodeDigit('g')));
     ASSERT_THAT(soundex.encodeDigit('d'), Eq(soundex.encodeDigit('t')));
     ASSERT_THAT(soundex.encode("Abfxgdt"), Eq("A123"));
+}
+
+TEST_F(SoundexEncoding, UpperCaseFirstLetter)
+{
+    // Arrange
+
+    // Act
+
+    // Assert
+    ASSERT_THAT(soundex.encode("abcd"), StartsWith("A"));
 }
