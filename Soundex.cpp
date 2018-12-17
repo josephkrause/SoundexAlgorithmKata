@@ -53,5 +53,6 @@ string Soundex::encodeDigit(char letter) const
             {'r', "6"}
     };
 
-    return encoding.find(letter)->second;
+    auto it = encoding.find(letter);
+    return it == encoding.end() ? "" : it->second;
 }

@@ -40,3 +40,13 @@ TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits)
     EXPECT_THAT(soundex.encode("Ad"), Eq("A300"));
 }
 
+TEST_F(SoundexEncoding, IgnoreNonAlphabetics)
+{
+    // Arrange
+
+    // Act
+
+    // Assert
+    ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
+}
+
