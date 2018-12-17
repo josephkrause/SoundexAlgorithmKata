@@ -36,7 +36,10 @@ string Soundex::encodeDigits(const string &word) const
         {
             break;
         }
-        encoding += encodeDigit(letter);
+        if(encodeDigit(letter) != lastDigit(encoding))
+        {
+            encoding += encodeDigit(letter);
+        }
     }
 
     return encoding;
@@ -73,4 +76,14 @@ string Soundex::encodeDigit(char letter) const
 
     auto it = encoding.find(letter);
     return it == encoding.end() ? "" : it->second;
+}
+
+string Soundex::lastDigit(const string &encoding) const
+{
+    if(encoding.empty())
+    {
+        return "";
+    }
+
+    return std::string(1, encoding.back());
 }
