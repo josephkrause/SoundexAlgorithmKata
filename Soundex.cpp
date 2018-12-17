@@ -30,17 +30,21 @@ string Soundex::encodeDigits(const string &word) const
 {
     string encoding;
 
-    if(word.empty())
-    {
-        return "";
-    }
-
     for(auto letter : word)
     {
+        if(isComplete(encoding))
+        {
+            break;
+        }
         encoding += encodeDigit(letter);
     }
 
     return encoding;
+}
+
+bool Soundex::isComplete(const string &encoding) const
+{
+    return encoding.length() == MaxCodeLength - 1;
 }
 
 string Soundex::encodeDigit(char letter) const
@@ -70,5 +74,3 @@ string Soundex::encodeDigit(char letter) const
     auto it = encoding.find(letter);
     return it == encoding.end() ? "" : it->second;
 }
-
-
