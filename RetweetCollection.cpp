@@ -19,3 +19,8 @@ void RetweetCollection::add(const Tweet &tweet)
     size_++;
 }
 
+RetweetCollection::RetweetCollection()
+{
+    size_ = 0;
+}
+
