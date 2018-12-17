@@ -92,3 +92,13 @@ TEST_F(SoundexEncoding, UpperCaseFirstLetter)
     // Assert
     ASSERT_THAT(soundex.encode("abcd"), StartsWith("A"));
 }
+
+TEST_F(SoundexEncoding, IgnoreVowellLikeLetters)
+{
+    // Arrange
+
+    // Act
+
+    // Assert
+    ASSERT_THAT(soundex.encode("BaAeEiIoOuUhHyYcdl"), Eq("B234"));
+}
