@@ -67,3 +67,4 @@ TEST(ATweet, RequiresUserToStartWithAtSign2)
 
     ASSERT_THROW(Tweet tweet("msg", invalidUser), InvalidUserException);
 }
+
