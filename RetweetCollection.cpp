@@ -16,6 +16,7 @@ unsigned int RetweetCollection::size() const
 
 void RetweetCollection::add(const Tweet &tweet)
 {
+    tweets.insert(tweet);
     size_++;
 }
 
@@ -23,4 +24,3 @@ RetweetCollection::RetweetCollection()
 {
     size_ = 0;
 }
-
