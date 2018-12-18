@@ -8,6 +8,12 @@
 #include <iostream>
 using namespace std;
 
+class InvalidUserException : public std::invalid_argument
+{
+public:
+    InvalidUserException(const string& user) : invalid_argument(user){}
+};
+
 class Tweet
 {
     string message_;
@@ -19,6 +25,8 @@ public:
     bool operator==(const Tweet &rhs) const;
     bool operator!=(const Tweet &rhs) const;
     const string &getUser() const;
+
+    bool isValid(const string& user) const;
 };
 
 

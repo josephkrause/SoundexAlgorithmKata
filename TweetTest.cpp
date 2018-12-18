@@ -30,3 +30,40 @@ TEST(ATweet, IsNotEqualToAnotherWhenMessageAndUserAreNotEqual)
 
     ASSERT_THAT(tweet, Ne(duplicate));
 }
+
+TEST(ATweet, IsLessThanWhenUserAndMessageAre)
+{
+    Tweet a("msg1", "@user1");
+    Tweet b("msg2", "@user2");
+
+    ASSERT_THAT(a, Lt(b));
+}
+
+TEST(ATweet, CanCopyConstructed)
+{
+    Tweet a("msgA", "@user");
+    Tweet b(a);
+
+    ASSERT_THAT(a, Eq(b));
+}
+
+TEST(ATweet, RequiresUserToStartWithAtSign)
+{
+    string invalidUser("notStartingWith@");
+
+    ASSERT_THROW(Tweet tweet("msg", invalidUser), InvalidUserException);
+}
+
+TEST(ATweet, RequiresUserToStartWithAtSign2)
+{
+    string invalidUser("notStartingWith@");
+
+    try
+    {
+        Tweet tweet("msg", invalidUser);
+        FAIL();
+    }
+    catch(const InvalidUserException& expected){}
+
+    ASSERT_THROW(Tweet tweet("msg", invalidUser), InvalidUserException);
+}
