@@ -16,7 +16,8 @@ public:
     static const string NULL_USER;
     Tweet(const string& msg = "", const string& user = Tweet::NULL_USER);
     bool operator<(const Tweet &rhs) const;
-
+    bool operator==(const Tweet &rhs) const;
+    bool operator!=(const Tweet &rhs) const;
     const string &getUser() const;
 };
 
